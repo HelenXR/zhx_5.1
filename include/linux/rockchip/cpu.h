@@ -5,7 +5,7 @@ extern unsigned long rockchip_soc_id;
 
 static inline bool cpu_is_rockchip(void)
 {
-	return rockchip_soc_id;
+return rockchip_soc_id;
 }
 
 #define ROCKCHIP_CPU_VERION_MASK	0x0000f000
@@ -13,15 +13,15 @@ static inline bool cpu_is_rockchip(void)
 
 static inline unsigned long rockchip_get_cpu_version(void)
 {
-	return (rockchip_soc_id & ROCKCHIP_CPU_VERION_MASK)
-		>> ROCKCHIP_CPU_VERION_SHIFT;
+return (rockchip_soc_id & ROCKCHIP_CPU_VERION_MASK)
+	>> ROCKCHIP_CPU_VERION_SHIFT;
 }
 
 static inline void rockchip_set_cpu_version(unsigned long ver)
 {
-	rockchip_soc_id &= ~ROCKCHIP_CPU_VERION_MASK;
-	rockchip_soc_id |=
-		(ver << ROCKCHIP_CPU_VERION_SHIFT) & ROCKCHIP_CPU_VERION_MASK;
+rockchip_soc_id &= ~ROCKCHIP_CPU_VERION_MASK;
+rockchip_soc_id |=
+	(ver << ROCKCHIP_CPU_VERION_SHIFT) & ROCKCHIP_CPU_VERION_MASK;
 }
 
 #define ROCKCHIP_CPU_MASK       0xffff0000
@@ -39,7 +39,7 @@ static inline void rockchip_set_cpu_version(unsigned long ver)
 #define ROCKCHIP_CPU(id, ID) \
 static inline bool cpu_is_rk##id(void) \
 { \
-	return (rockchip_soc_id & ROCKCHIP_CPU_MASK) == ROCKCHIP_CPU_RK ##ID; \
+return (rockchip_soc_id & ROCKCHIP_CPU_MASK) == ROCKCHIP_CPU_RK ##ID; \
 }
 #else
 #define ROCKCHIP_CPU(id, ID) \
@@ -76,6 +76,7 @@ ROCKCHIP_CPU(3288, 3288)
 #define ROCKCHIP_SOC_RK3188PLUS (ROCKCHIP_CPU_RK3188 | 0x10)
 #define ROCKCHIP_SOC_RK3190     (ROCKCHIP_CPU_RK319X | 0x00)
 #define ROCKCHIP_SOC_RK3288     (ROCKCHIP_CPU_RK3288 | 0x00)
+#define ROCKCHIP_SOC_RK3288W    (ROCKCHIP_CPU_RK3288 | 0x01)
 
 #ifdef CONFIG_ARM
 #define ROCKCHIP_SOC(id, ID) \
@@ -107,5 +108,5 @@ ROCKCHIP_SOC(3188, 3188)
 ROCKCHIP_SOC(3188plus, 3188PLUS)
 ROCKCHIP_SOC(3190, 3190)
 ROCKCHIP_SOC(3288, 3288)
-
+ROCKCHIP_SOC(3288w, 3288W)
 #endif
