@@ -1279,6 +1279,11 @@ static int rk3288_load_screen(struct rk_lcdc_driver *dev_drv, bool initscreen)
 			mask = m_EDP_OUT_EN;
 			val = v_EDP_OUT_EN(1);
 			break;
+		default:
+			mask = 0;
+			val = 0;
+			pr_info("unknow screen type: %d\n", screen->type);
+			break;
 		}
 		lcdc_msk_reg(lcdc_dev, SYS_CTRL, mask, val);
 #ifndef CONFIG_RK_FPGA
