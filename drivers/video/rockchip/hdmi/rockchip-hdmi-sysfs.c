@@ -196,7 +196,7 @@ static int hdmi_get_color(struct rk_display_device *device, char *buf)
 	i = snprintf(buf, PAGE_SIZE,
 		     "Supported Color Mode: %d\n", mode);
 	i += snprintf(buf + i, PAGE_SIZE - i,
-		      "Current Color Mode: %d\n", hdmi->video.color_output);
+		      "Current Color Mode: %d\n", hdmi->colormode);
 
 	mode = (1 << 1); /* 24 bit*/
 	if (hdmi->edid.deepcolor & HDMI_DEEP_COLOR_30BITS &&
@@ -211,8 +211,7 @@ static int hdmi_get_color(struct rk_display_device *device, char *buf)
 	i += snprintf(buf + i, PAGE_SIZE - i,
 		      "Supported Color Depth: %d\n", mode);
 	i += snprintf(buf + i, PAGE_SIZE - i,
-		      "Current Color Depth: %d\n",
-		      hdmi->video.color_output_depth);
+		      "Current Color Depth: %d\n", hdmi->colordepth);
 	i += snprintf(buf + i, PAGE_SIZE - i,
 		      "Supported Colorimetry: %d\n", hdmi->edid.colorimetry);
 	i += snprintf(buf + i, PAGE_SIZE - i,
